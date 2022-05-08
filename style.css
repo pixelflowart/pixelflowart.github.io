@@ -7,9 +7,14 @@
 }
 
 body {
-    background-color: #70c6c7;
+    background-color:#D6DBDF;
+    background-image: url(img/art-arrows2.png);
+    background-size: contain;
 }
-
+a {
+    text-decoration: none;
+    color: #F1F8FD;
+}
 .resume-contents {
     min-height: 100vh;
     width: 80%;
@@ -21,29 +26,32 @@ body {
 .left-section {
     grid-column: span 2;
     height: 100%;
-    background-color: #00204A;
+    background-color: rgb(72, 7, 7);
+    padding: 20px;
 }
 
 .right-section {
     grid-column: span 5;
     height: 100%;
-    background-color: #4B6982;
+    background-color: black;
     border-radius: 0px 60px 0px 0px;
+    padding: 20px;
 }
 
 .left-section-contents{
     padding: 2rem 2rem;
 }
 
+
 .profile {
     width: 100%;
-    border-bottom: 2px solid #1B2631;
+    border-bottom: 2px solid #a5a3a3;
 }
 
 .profile .profile-image {
     width: 100%;
     border-radius: 50%;
-    border: 8px solid #1B2631;
+    border: 8px solid #D6DBDF;
 }
 
 .name {
@@ -57,7 +65,7 @@ body {
 }
 
 .profession {
-    color: #FDB44B;
+    color: brown;
     font-size: 20px;
     text-transform: uppercase;
     text-align: center;
@@ -68,7 +76,7 @@ body {
 
 /* .contact-info { border-bottom: 2px solid #1B2631; } */
 .left-title {
-    color: #FDB44B;
+    color: brown;
     font-size: 20px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -77,7 +85,10 @@ body {
     align-items: center;
     padding-top: 3rem;
 }
-
+#art{
+    padding-top: 20px;
+    width: 90%;
+}
 .contact-info ul {
     padding-top: 1.5rem;
 }
@@ -96,7 +107,7 @@ body {
 .references ul li i {
     padding-right: 1rem;
     font-size: 18px;
-    color: #2E86C1;
+    color: #F1F8FD;
 }
 
 .skills ul {
@@ -111,7 +122,11 @@ body {
     align-items: center;
     text-transform: uppercase;
 }
+.exp-desc {
+    padding: .4rem 0;
+    color: #d6dbdfaf;
 
+}
 .referance-name {
     padding-top: 1.5rem;
     padding-bottom: .4rem;
@@ -135,7 +150,7 @@ body {
 }
 
 .right-title {
-    color: #70C6C7;
+    color: #F1F8FD;
     font-size: 40px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -172,7 +187,7 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #FDB44B;
+    color: #a5a3a3;
     padding-bottom: .4rem;
 }
 
@@ -191,7 +206,7 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #FDB44B;
+    color: #a5a3a3;
     padding-bottom: .4rem;
 }
 
