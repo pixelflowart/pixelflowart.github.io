@@ -1,205 +1,118 @@
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixelflowart</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equação do 2º Grau</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+    input {
+      width: 60px;
+      margin: 5px;
+      text-align: center;
+    }
+    button {
+      margin: 10px;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    canvas {
+      margin-top: 20px;
+    }
+  </style>
 </head>
-
 <body>
+  <h1>Calculadora: Equação do 2º Grau</h1>
+  <p>Digite os valores de <b>a</b>, <b>b</b> e <b>c</b>:</p>
+  <input type="number" id="a" placeholder="a">
+  <input type="number" id="b" placeholder="b">
+  <input type="number" id="c" placeholder="c">
+  <br>
+  <button onclick="calcular()">Calcular</button>
 
-    <main class="resume-contents">
-        <section class="left-section">
-            <section class="left-section-content">
-                <div class="profile">
-                    <img src="img/profile.jpg" alt="Profile Image" class="profile-image">
-                    <p class="name">Pixel / generative artist in a trance through unconscious worlds.</p>
-                </div>
-                <div class="contact-info">
-                    <p class="left-title">CONTACT</p>
-                    <ul>
-                        <li><i class="fa fa-envelope">pixelflowart.dev@gmail.com</i></li>
-                        <li><i class="fa fa-globe">www.pixelflowart.com</i></li>
-                        <li><i class="fa fa-github">Pixelflowart</i></li>
-                    </ul>
-                </div>
-                <div class="skills">
-                    <p class="left-title">Skills</p>
-                    <ul>
-                        <li>
-                            <p>HTML, CSS, PHP Git e Github</p>
-                        </li>
-                        <li>
-                            <p>Javascript</p>
-                        </li>
-                        <li>
-                            <p>P5Js</p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="art">
-                    <p class="left-title">News</p>
-                    <img src="img/art-arrows.jpg" alt="Generative Art" id="art">
-                    <p class="exp-desc">Arrows between emotions and forms.</p>
+  <div id="resultado"></div>
+  <canvas id="grafico" width="400" height="300"></canvas>
 
-                </div>
-            </section>
-        </section>
-        <section class="right-section">
-            <div class="right-section-contents">
-                <section class="about-gap">
-                    <div class="right-title">About me</div>
-                    <p class="about-me-contents">
-                        <br>Developer, Pixel/Generative artist, psychoanalyst..
-                        <br>...
-                    </p>
-                </section>
+  <script>
+    let chart;
 
-            </div>
-            <section class="experience gap">
-                <div class="right-title">Work</div>
-                <div class="experience-contents">
-                    
-                    <div class="exp-left">
-                        <p class="exp-company-name">FxHash</p>
-                        <p class="exp-time-period"><a href="https://www.fxhash.xyz/generative/13446">Arrows Between Emotions</a></p>
-                    </div>
-                    <div class="exp-right">
-                        <p class="exp-position">Arrows Between Emotions</p>
-                        <p class="exp-desc">
-                            Project #13446
+    function calcular() {
+      const a = parseFloat(document.getElementById("a").value);
+      const b = parseFloat(document.getElementById("b").value);
+      const c = parseFloat(document.getElementById("c").value);
 
-                        Published on May 24, 2022 at 00:35
-                        The project “Arrows Between Emotions” was formed with a concern to present this transformation in an artist and code developer, making the logic appear through precise and well-defined forms, but that the stage was really of emotions through freer curves involving aligned with accentuated movements in directions of straight or oblique ascents and even in more circular or decadent processes that are part of the journey of the wheel of life of art and the artist.
+      if (isNaN(a) || isNaN(b) || isNaN(c)) {
+        document.getElementById("resultado").innerHTML = "⚠️ Preencha todos os valores!";
+        return;
+      }
 
+      const delta = b*b - 4*a*c;
+      let resultado = `<p>Equação: ${a}x² + ${b}x + ${c} = 0</p>`;
+      resultado += `<p>Δ (Delta) = ${delta}</p>`;
 
-                        The process of the work involved the construction of a background to receive the shapes and colors. I used an algorithm that generated a distribution of noise across the screen, with its coloring related to the shapes in the search for a pleasant composition. Then came the objective forms, setting the stage, finally, for the flow of emotions through the agglutinated and dispersed curves soaked in colors in a game of shadow and light, presenting the depth and movement of the creation process and the orientation to which it takes. all the strength of this walk.
+      let raizes = [];
+      if (delta < 0) {
+        resultado += "<p>❌ Não existem raízes reais.</p>";
+      } else if (delta === 0) {
+        const x = -b / (2*a);
+        raizes.push(x);
+        resultado += `<p>Raiz única: x = ${x}</p>`;
+      } else {
+        const x1 = (-b + Math.sqrt(delta)) / (2*a);
+        const x2 = (-b - Math.sqrt(delta)) / (2*a);
+        raizes.push(x1, x2);
+        resultado += `<p>Raízes: x₁ = ${x1}, x₂ = ${x2}</p>`;
+      }
 
-                        Press 's' key in live mode to save in png.
+      document.getElementById("resultado").innerHTML = resultado;
 
-                        license: CC BY-NC-ND 4.0
-                        @pixelflowart, May 2022
-                        </p>
-                    </div>
-                    
-                        <div class="exp-left">
-                        <p class="exp-company-name">FxHash</p>
-                        <p class="exp-time-period"><a href="https://www.fxhash.xyz/generative/19725">Flowers of gratitude</a></p>
-                    </div>
-                    <div class="exp-right">
-                        <p class="exp-position">Flowers of gratitude</p>
-                        <p class="exp-desc">
-                       Project #19725
+      // Gráfico
+      const x_vals = [];
+      const y_vals = [];
+      for (let x = -10; x <= 10; x += 0.2) {
+        x_vals.push(x);
+        y_vals.push(a*x*x + b*x + c);
+      }
 
-Published on September 22, 2022 at 21:28
-Flowers of gratitude is a tribute to the collectors of "Arrows between emotions". In the present work, I sought to preserve characteristics of the first, such as a similar color palette, but mainly the exploration of bezier and basic shapes such as the point. Flowers symbolize the feeling of gratitude, coming from different angles, sizes and shapes, just like people. Perspective can be taken from the ground to the universe in the presence of grids, planets and stars depending on their presence and position.
-                        </p>
-                    </div>               
-                    
-                       <div class="exp-left">
-                        <p class="exp-company-name">FxHash</p>
-                        <p class="exp-time-period"><a href="https://www.fxhash.xyz/generative/21510">Branches</a></p>
-                    </div>
-                    <div class="exp-right">
-                        <p class="exp-position">Branches</p>
-                        <p class="exp-desc">
-                            Project #21510
+      if (chart) chart.destroy();
 
-Published on November 16, 2022 at 23:41
-Branches, is a work that explores the importance of the parts for the formation of the whole that differs in each personal vision. Harmony and chaos play in the composition of this work. FxHash, Happy anniversary!
-
-Press S to Save at resolution of the current window size without limit on screensize.
-
-External Code/Libraries Used:
-p5.grain - Gorilla Sun  </p>
-                    </div>             
-                    
-                    <div class="exp-left">
-                        <p class="exp-company-name">TEIA</p>
-                        <p class="exp-time-period"><a href="https://teia.art/objkt/412169">Virtue of courage</a></p>
-                    </div>
-                    <div class="exp-right">
-                        <p class="exp-position">Pixel Artist</p>
-                        <p class="exp-desc">
-                            Continuing the cycle of life, a role marks us among the challenges proposed by the
-                            inhospitable environment such as in the northeastern hinterland of Brazil. Be a coward or
-                            use the virtue of courage. Floating in this trance of madness worthy of the hero's journey.
-                            Enjoy the background sound produced by the great soul reader, @fantonbeat, to immerse
-                            yourself in its ascension.
-
-                            audiotrack: @fantonbeat
-                        </p>
-                    </div>
-                    
-                    <div class="exp-left">
-                        <p class="exp-company-name">TEIA</p>
-                        <p class="exp-time-period"><a href="https://teia.art/objkt/346664">Virtue of patience</a> </p>
-                    </div>
-                    <div class="exp-right">
-                        <p class="exp-position">Pixel Artist</p>
-                        <p class="exp-desc">
-                            Within the cycle of life we ​​play various roles with major milestones, here is the virtue
-                            of patience that brings us, at a better time, the best we can hope for in states of hypnosis
-                            during the hero's journey we all go through.
-                        </p>
-                    </div>
-                    
-                </div>
-            </section>
-            <section class="education gap">
-                <div class="right-title">Professional qualification</div>
-                <div class="education-contents">
-                    <div class="education-left">
-                        <p class="education-school-name">UEFS</p>
-                        <p class="education-time-period">2001-2007</p>
-                    </div>
-                    <div class="education-right">
-                        <p class="education-subject">Degree in Pedagogy</p>
-                    </div>
-                </div>
-                <div class="education-contents">
-                    <div class="education-left">
-                        <p class="education-school-name">SENAI</p>
-                        <p class="education-time-period">2007</p>
-                    </div>
-                    <div class="education-right">
-                        <p class="education-subject">Webdesigner</p>
-                    </div>
-                </div>
-                <div class="education-contents">
-                    <div class="education-left">
-                        <p class="education-school-name">SENAI</p>
-                        <p class="education-time-period">2008</p>
-                    </div>
-                    <div class="education-right">
-                        <p class="education-subject">PHP</p>
-                    </div>
-                </div>
-                <div class="education-contents">
-                    <div class="education-left">
-                        <p class="education-school-name">FAVIC </p>
-                        <p class="education-time-period">2014</p>
-                    </div>
-                    <div class="education-right">
-                        <p class="education-subject">Specialization in Management, Coordination and Educational Guidance
-                        </p>
-                    </div>
-                </div>
-                <div class="education-contents">
-                    <div class="education-left">
-                        <p class="education-school-name">FAVIC </p>
-                        <p class="education-time-period">2017</p>
-                    </div>
-                    <div class="education-right">
-                        <p class="education-subject">Specialization in Clinical Psychoanalysis</p>
-                    </div>
-                </div>
-            </section>
-        </section>
-    </main>
-
+      const ctx = document.getElementById("grafico").getContext("2d");
+      chart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: x_vals,
+          datasets: [{
+            label: "y = ax² + bx + c",
+            data: y_vals,
+            borderColor: "blue",
+            fill: false,
+            pointRadius: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: {
+              type: "linear",
+              position: "bottom"
+            },
+            y: {
+              beginAtZero: false
+            }
+          }
+        }
+      });
+    }
+  </script>
 </body>
-
 </html>
